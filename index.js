@@ -20,6 +20,18 @@ const Puppet = async () => {
     await page.click("button[name=loginbutton]")
 
     console.log(`Attempting to log in using ${user} details`)
+
+    //waiting for the next page to load
+    await page.waitForSelector("tr")
+
+    //check if the new page has the header "my details" to confirm a successfull login
+    var headerCheck
+    try {
+        headerCheck = await page.$eval("span[class='header-title']", el => el.innerHTML)
+        console.log("Successfully logged in")
+    } catch (error) {
+        console.log("Unsuccessful login attempt")
+    }
 //   await page.screenshot({path: 'example.png'});
 
 //   await browser.close();
