@@ -8,6 +8,7 @@ const adiiPassword = "KLSV110411"
 const rosterURL = "https://see.adiinsights.com/shifts/?unit=12660&date=2021-01-30"
 const accManURL = "https://pericentral.worldmanager.com/admin/ctrl?page=accounts%2Fprofile"
 
+//responsible for making the puppet log into adii and getting staff names
 const CheckStaff = async (page) => {
     await page.goto(rosterURL)
     try {
@@ -36,6 +37,7 @@ const CheckStaff = async (page) => {
     }
 }
 
+//opening a txt file if one doesn't already exist. appends an array of names scraped from adii
 const WriteNameToFile = async (x) => {
     const fileName = "names.txt"
     const dir = `${__dirname}/${fileName}`
@@ -51,7 +53,8 @@ const Puppet = async () => {
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
-    await CheckStaff(page)
+    //works, txt file already exists though just skipping this step.
+    //await CheckStaff(page)
 
     return
 
