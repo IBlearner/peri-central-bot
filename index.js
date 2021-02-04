@@ -1,9 +1,10 @@
 const puppeteer = require('puppeteer');
 const fs = require("fs")
+require("dotenv").config()
 
-const user = "kienvi"
 const password = "periperi"
-const adiiUser = "kienvi"
+const adiiUser = process.env.Adii_User
+const adiiPassword = process.env.Adii_Password
 const adiiPassword = "KLSV110411"
 const rosterURL = "https://see.adiinsights.com/shifts/?unit=12660&date=2021-01-30"
 const accManURL = "https://pericentral.worldmanager.com/admin/ctrl?page=accounts%2Fprofile"
